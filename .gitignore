@@ -2,6 +2,9 @@
 .idea/
 cargo_app/__pycache__/
 scripts_for_development
+airlift/__pycache__/
+airlift/migrations/__pycache__/
+airlift/tests/__pycache__/
 
 # Files
 Pipfile

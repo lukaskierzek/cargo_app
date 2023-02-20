@@ -1,7 +1,9 @@
 # Directories
 __pycache__
 cargo_app/__pycache__
-airlift/__pycache__
+airlift/__pycache__/
+airlift/migrations/__pycache__/
+airlift/tests/__pycache__/
 .git
 .idea
 scripts_for_development

@@ -41,7 +41,7 @@ services:
       sh -c "cd cargo_app/ &&
              python manage.py collectstatic --no-input &&
              python manage.py migrate &&
-             python manage.py runserver 0.0.0.0:8000"
+             gunicorn cargo_app.wsgi -b 0.0.0.0:8000"
     env_file:
       - .env
     environment:
@@ -59,28 +59,30 @@ services:
       - postgres
     networks:
       - cargo_app_net
-#      - nginx_net
+      - nginx_net
 
 
-#  nginx:
-#    build: ./nginx
-#    volumes:
-#      - static:/cargo_app/static
-#      - media:/cargo_app/static
-#    ports:
-#      - "80:80"
-#    depends_on:
-#      - airlift
-#    networks:
-#      - nginx_net
+  nginx:
+    build:
+      context: nginx/
+      dockerfile: Dockerfile
+    volumes:
+      - static:/cargo_app/static
+      - media:/cargo_app/media
+    ports:
+      - "80:80"
+    depends_on:
+      - airlift
+    networks:
+      - nginx_net
 
 networks:
   cargo_app_net:
     driver: bridge
   nginx_net:
-    driver:  bridge
+    driver: bridge
   default:
-    name: airlift_net
+    name: cargo_app_net
     external: true
 
 volumes:

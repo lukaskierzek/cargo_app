@@ -1,6 +1,7 @@
 # Directories
 .idea/
 cargo_app/__pycache__/
+scripts_for_development
 
 # Files
 Pipfile

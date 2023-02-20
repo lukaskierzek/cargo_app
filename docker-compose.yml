@@ -1,0 +1,90 @@
+version: "3.9"
+services:
+
+  postgres:
+    image: postgres:${POSTGRES_IMAGE_VERSION}
+    env_file:
+      - .env
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - cargo_app_net
+
+  pgadmin:
+    image: dpage/pgadmin4
+    env_file:
+      - .env
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+    volumes:
+      - pgadmin:/root/.pgadmin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - cargo_app_net
+
+  airlift:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: >
+      sh -c "cd cargo_app/ &&
+             python manage.py collectstatic --no-input &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - SECRET_KEY=${SECRET_KEY}
+      - DEBUG=${DEBUG}
+    volumes:
+      - static:/cargo_app/cargo_app/static
+      - media:/cargo_app/cargo_app/media
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    networks:
+      - cargo_app_net
+#      - nginx_net
+
+
+#  nginx:
+#    build: ./nginx
+#    volumes:
+#      - static:/cargo_app/static
+#      - media:/cargo_app/static
+#    ports:
+#      - "80:80"
+#    depends_on:
+#      - airlift
+#    networks:
+#      - nginx_net
+
+networks:
+  cargo_app_net:
+    driver: bridge
+  nginx_net:
+    driver:  bridge
+  default:
+    name: airlift_net
+    external: true
+
+volumes:
+  postgres:
+  pgadmin:
+  static:
+  media:

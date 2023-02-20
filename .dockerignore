@@ -6,7 +6,7 @@ airlift/migrations/__pycache__/
 airlift/tests/__pycache__/
 .git
 .idea
-scripts_for_development
+scripts_for_development/
 
 # Files
 Dockerfile

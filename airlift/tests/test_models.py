@@ -1,15 +1,24 @@
 from django.test import TestCase
+from airlift.models import PilotsInformations
 
 
-class PilotInfoCase(TestCase):
+class PilotsInformationsCase(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.pilot_info = PilotInfo.objects.create(
+        cls.pilot = Pilots.objects.create(
+
+        )
+
+        cls.pilot_info = PilotsInformations.objects.create(
+            pilot_id=1,
             position='First officer',
             rank='Captain',
             age=35,
             country='Poland'
         )
+
+    def test_pilot_id(self):
+        self.assertEqual(self.pilot_info.pilot_id, 1)
 
     def test_position(self):
         self.assertEqual(self.pilot_info._meta.get_field('position').max_length, 50)
@@ -27,10 +36,20 @@ class PilotInfoCase(TestCase):
         self.assertEqual(self.pilot_info._meta.get_field('age').max_length, 50)
         self.assertEqual(self.pilot_info._meta.get_field('age').help_text, "Enter a pilot age")
         self.assertEqual(self.pilot_info._meta.get_field('age').verbose_name, "Pilot age")
-        self.assertEqual(self.pilot_info.rank, 35)
+        self.assertEqual(self.pilot_info.age, 35)
 
     def test_country(self):
         self.assertEqual(self.pilot_info._meta.get_field('country').max_length, 50)
         self.assertEqual(self.pilot_info._meta.get_field('country').help_text, "Enter a pilot country")
         self.assertEqual(self.pilot_info._meta.get_field('country').verbose_name, "Pilot country")
-        self.assertEqual(self.pilot_info.rank, "Poland")
+        self.assertEqual(self.pilot_info.country, "Poland")
+
+    def test___str__(self):
+        self.assertEqual(
+            self.pilot_info.__str__(),
+            f"{self.pilot_info.position}\n{self.pilot_info.rank}\n{self.pilot_info.age}\n{self.pilot_info.country}"
+        )
+
+    def test_meta(self):
+        self.assertEqual(self.pilot_info._meta.verbose_name, "Pilot information")
+        self.assertEqual(self.pilot_info._meta.verbose_name_plural, "Pilots informations")

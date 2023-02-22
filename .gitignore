@@ -1,5 +1,6 @@
 # Directories
 .idea/
+__pycache__/
 cargo_app/__pycache__/
 airlift/__pycache__/
 airlift/migrations/__pycache__/

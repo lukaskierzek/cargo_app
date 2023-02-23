@@ -1,6 +1,26 @@
 from django.db import models
 
 
+class Cargos(models.Model):
+    name = models.CharField(
+        max_length=50,
+        help_text="Enter a cargo name",
+        verbose_name="Cargo name"
+    )
+
+    quantity = models.PositiveIntegerField(
+        help_text="Enter a cargo quantity",
+        verbose_name="Cargo quantity"
+    )
+
+    def __str__(self):
+        return f"{self.name}: {self.quantity}"
+
+    class Meta:
+        verbose_name = "Cargo"
+        verbose_name_plural = "Cargos"
+
+
 class Destinations(models.Model):
     from_airport = models.CharField(
         max_length=50,

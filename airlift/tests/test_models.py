@@ -1,10 +1,15 @@
 from django.test import TestCase
-from airlift.models import PilotsInformations, Pilots, Aircrafts, Destinations
+from airlift.models import PilotsInformations, Pilots, Aircrafts, Destinations, Cargos
 
 
 class AirliftCase(TestCase):
     @classmethod
     def setUpTestData(cls):
+        cls.cargo = Cargos.objects.create(
+            name='MGM-140 ATACMS',
+            quantity=1000
+        )
+
         cls.destination = Destinations.objects.create(
             from_airport='Rzeszów International Airport',
             to_airport='John Paul II International Airport Kraków-Balice'
@@ -29,6 +34,26 @@ class AirliftCase(TestCase):
             age=35,
             country='Poland'
         )
+
+    # ----------tests for Cargos---------- #
+
+    def test_cargo_name(self):
+        self.assertEqual(self.cargo._meta.get_field('name').max_length, 50)
+        self.assertEqual(self.cargo._meta.get_field('name').help_text, "Enter a cargo name")
+        self.assertEqual(self.cargo._meta.get_field('name').verbose_name, "Cargo name")
+        self.assertEqual(self.cargo.name, "MGM-140 ATACMS")
+
+    def test_cargo_quantity(self):
+        self.assertEqual(self.cargo._meta.get_field('quantity').help_text, "Enter a cargo quantity")
+        self.assertEqual(self.cargo._meta.get_field('quantity').verbose_name, "Cargo quantity")
+        self.assertEqual(self.cargo.quantity, 1000)
+
+    def test_cargo___str__(self):
+        self.assertEqual(self.cargo.__str__(), f"{self.cargo.name}: {self.cargo.quantity}")
+
+    def test_cargo_meta(self):
+        self.assertEqual(self.cargo._meta.verbose_name, "Cargo")
+        self.assertEqual(self.cargo._meta.verbose_name_plural, "Cargos")
 
     # ----------tests for Destinations---------- #
 

@@ -1,13 +1,25 @@
 from django.test import TestCase
-from airlift.models import PilotsInformations, Pilots
+from airlift.models import PilotsInformations, Pilots, Aircrafts, Destinations
 
 
 class AirliftCase(TestCase):
     @classmethod
     def setUpTestData(cls):
+        cls.destination = Destinations.objects.create(
+            from_airport='Rzeszów International Airport',
+            to_airport='John Paul II International Airport Kraków-Balice'
+        )
+
+        cls.aircraft = Aircrafts.objects.create(
+            name='Lockheed C-130 Hercules',
+            country='Poland',
+            destination_id=1
+        )
+
         cls.pilot = Pilots.objects.create(
             first_name='Jan',
-            last_name='Kowalski'
+            last_name='Kowalski',
+            aircraft_id=1
         )
 
         cls.pilot_info = PilotsInformations.objects.create(
@@ -17,6 +29,71 @@ class AirliftCase(TestCase):
             age=35,
             country='Poland'
         )
+
+    # ----------tests for Destinations---------- #
+
+    def test_destination_from_airport(self):
+        self.assertEqual(self.destination._meta.get_field('from_airport').max_length, 50)
+        self.assertEqual(
+            self.destination._meta.get_field('from_airport').help_text,
+            "Enter a airport name from the plane will take off"
+        )
+        self.assertEqual(
+            self.destination._meta.get_field('from_airport').verbose_name,
+            "Airport name from the plane will take off"
+        )
+        self.assertEqual(self.destination.from_airport, "Rzeszów International Airport")
+
+    def test_destination_to_airport(self):
+        self.assertEqual(self.destination._meta.get_field('to_airport').max_length, 50)
+        self.assertEqual(
+            self.destination._meta.get_field('to_airport').help_text,
+            "Enter a airport name where the plane will land"
+        )
+        self.assertEqual(
+            self.destination._meta.get_field('to_airport').verbose_name,
+            "Airport name where the plane will land"
+        )
+        self.assertEqual(self.destination.to_airport, "John Paul II International Airport Kraków-Balice")
+
+    def test_destination___str__(self):
+        self.assertEqual(
+            self.destination.__str__(),
+            f"{self.destination.from_airport} - {self.destination.to_airport}"
+        )
+
+    def test_destination_meta(self):
+        self.assertEqual(self.destination._meta.verbose_name, "Destination")
+        self.assertEqual(self.destination._meta.verbose_name_plural, "Destinations")
+
+    # ----------tests for Aircrafts---------- #
+
+    def test_aircraft_name(self):
+        self.assertEqual(self.aircraft._meta.get_field('name').max_length, 50)
+        self.assertEqual(self.aircraft._meta.get_field('name').help_text, "Enter a aircraft name")
+        self.assertEqual(self.aircraft._meta.get_field('name').verbose_name, "Aircraft name")
+        self.assertEqual(self.aircraft.name, "Lockheed C-130 Hercules")
+
+    def test_aircraft_country(self):
+        self.assertEqual(self.aircraft._meta.get_field('country').max_length, 50)
+        self.assertEqual(
+            self.aircraft._meta.get_field('country').help_text,
+            "Enter a country name that owns the aircraft"
+        )
+        self.assertEqual(self.aircraft._meta.get_field('country').verbose_name, "Country name that owns the aircraft")
+        self.assertEqual(self.aircraft.country, 'Poland')
+
+    def test_aircraft_destination(self):
+        self.assertEqual(self.aircraft.destination_id, 1)
+
+    def test_aircraft___str__(self):
+        self.assertEqual(self.aircraft.__str__(), f"{self.aircraft.name} ({self.aircraft.country})")
+
+    def test_aircraft_meta(self):
+        self.assertEqual(self.aircraft._meta.verbose_name, "Aircraft")
+        self.assertEqual(self.aircraft._meta.verbose_name_plural, "Aircrafts")
+
+    # ----------tests for Pilots---------- #
 
     def test_pilot_first_name(self):
         self.assertEqual(self.pilot._meta.get_field('first_name').max_length, 50)
@@ -30,6 +107,9 @@ class AirliftCase(TestCase):
         self.assertEqual(self.pilot._meta.get_field('last_name').verbose_name, "Pilot last name")
         self.assertEqual(self.pilot.last_name, "Kowalski")
 
+    def test_pilot_aircraft(self):
+        self.assertEqual(self.pilot.aircraft_id, 1)
+
     def test_pilot___str__(self):
         self.assertEqual(
             self.pilot.__str__(),
@@ -39,6 +119,8 @@ class AirliftCase(TestCase):
     def test_pilot_meta(self):
         self.assertEqual(self.pilot._meta.verbose_name, "Pilot information")
         self.assertEqual(self.pilot._meta.verbose_name_plural, "Pilots informations")
+
+    # ----------tests for PilotsInformations---------- #
 
     def test_pilot_info_position(self):
         self.assertEqual(self.pilot_info._meta.get_field('position').max_length, 50)

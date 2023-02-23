@@ -61,6 +61,10 @@ class Aircrafts(models.Model):
         null=True
     )
 
+    cargo = models.ManyToManyField(
+        to=Cargos
+    )
+
     def __str__(self):
         return f"{self.name} ({self.country})"
 

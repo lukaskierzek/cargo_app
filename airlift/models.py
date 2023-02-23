@@ -1,7 +1,52 @@
 from django.db import models
 
 
-# Create your models here.
+class Destinations(models.Model):
+    from_airport = models.CharField(
+        max_length=50,
+        help_text="Enter a airport name from the plane will take off",
+        verbose_name="Airport name from the plane will take off"
+    )
+
+    to_airport = models.CharField(
+        max_length=50,
+        help_text="Enter a airport name where the plane will land",
+        verbose_name="Airport name where the plane will land"
+    )
+
+    def __str__(self):
+        return f"{self.from_airport} - {self.to_airport}"
+
+    class Meta:
+        verbose_name = "Destination"
+        verbose_name_plural = "Destinations"
+
+
+class Aircrafts(models.Model):
+    name = models.CharField(
+        max_length=50,
+        help_text="Enter a aircraft name",
+        verbose_name="Aircraft name"
+    )
+
+    country = models.CharField(
+        max_length=50,
+        help_text="Enter a country name that owns the aircraft",
+        verbose_name="Country name that owns the aircraft"
+    )
+
+    destination = models.ForeignKey(
+        to=Destinations,
+        on_delete=models.SET_NULL,
+        null=True
+    )
+
+    def __str__(self):
+        return f"{self.name} ({self.country})"
+
+    class Meta:
+        verbose_name = "Aircraft"
+        verbose_name_plural = "Aircrafts"
 
 
 class Pilots(models.Model):
@@ -15,6 +60,12 @@ class Pilots(models.Model):
         max_length=50,
         help_text="Enter a pilot last name",
         verbose_name="Pilot last name"
+    )
+
+    aircraft = models.ForeignKey(
+        to=Aircrafts,
+        on_delete=models.SET_NULL,
+        null=True
     )
 
     def __str__(self):

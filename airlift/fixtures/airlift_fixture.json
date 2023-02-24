@@ -1,0 +1,49 @@
+[
+  {
+    "model": "airlift.cargos",
+    "pk": 1,
+    "fields": {
+      "name": "MGM-140 ATACMS",
+      "quantity": 1000
+    }
+  },
+  {
+    "model": "airlift.destinations",
+    "pk": 1,
+    "fields": {
+      "from_airport": "Rzeszów International Airport",
+      "to_airport": "John Paul II International Airport Kraków-Balice"
+    }
+  },
+  {
+    "model": "airlift.aircrafts",
+    "pk": 1,
+    "fields": {
+      "name": "Lockheed C-130 Hercules",
+      "country": "Poland",
+      "destination": 1,
+      "cargo": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "airlift.pilots",
+    "pk": 1,
+    "fields": {
+      "first_name": "Jan",
+      "last_name": "Kowalski",
+      "aircraft": 1
+    }
+  },
+  {
+    "model": "airlift.pilotsinformations",
+    "pk": 1,
+    "fields": {
+      "position": "First officer",
+      "rank": "Captain",
+      "age": "35",
+      "country": "Poland"
+    }
+  }
+]

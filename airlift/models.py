@@ -4,12 +4,12 @@ from django.db import models
 class Cargos(models.Model):
     name = models.CharField(
         max_length=50,
-        help_text="Enter a cargo name",
+        help_text="Enter a cargo name.",
         verbose_name="Cargo name"
     )
 
     quantity = models.PositiveIntegerField(
-        help_text="Enter a cargo quantity",
+        help_text="Enter a cargo quantity.",
         verbose_name="Cargo quantity"
     )
 
@@ -24,13 +24,13 @@ class Cargos(models.Model):
 class Destinations(models.Model):
     from_airport = models.CharField(
         max_length=50,
-        help_text="Enter a airport name from the plane will take off",
+        help_text="Enter a airport name from the plane will take off.",
         verbose_name="Airport name from the plane will take off"
     )
 
     to_airport = models.CharField(
         max_length=50,
-        help_text="Enter a airport name where the plane will land",
+        help_text="Enter a airport name where the plane will land.",
         verbose_name="Airport name where the plane will land"
     )
 
@@ -45,24 +45,26 @@ class Destinations(models.Model):
 class Aircrafts(models.Model):
     name = models.CharField(
         max_length=50,
-        help_text="Enter a aircraft name",
+        help_text="Enter a aircraft name.",
         verbose_name="Aircraft name"
     )
 
     country = models.CharField(
         max_length=50,
-        help_text="Enter a country name that owns the aircraft",
+        help_text="Enter a country name that owns the aircraft.",
         verbose_name="Country name that owns the aircraft"
     )
 
     destination = models.ForeignKey(
         to=Destinations,
         on_delete=models.SET_NULL,
-        null=True
+        null=True,
+        blank=True
     )
 
     cargo = models.ManyToManyField(
-        to=Cargos
+        to=Cargos,
+        blank=True
     )
 
     def __str__(self):
@@ -76,20 +78,21 @@ class Aircrafts(models.Model):
 class Pilots(models.Model):
     first_name = models.CharField(
         max_length=50,
-        help_text="Enter a pilot first name",
+        help_text="Enter a pilot first name.",
         verbose_name="Pilot first name"
     )
 
     last_name = models.CharField(
         max_length=50,
-        help_text="Enter a pilot last name",
+        help_text="Enter a pilot last name.",
         verbose_name="Pilot last name"
     )
 
     aircraft = models.ForeignKey(
         to=Aircrafts,
         on_delete=models.SET_NULL,
-        null=True
+        null=True,
+        blank=True
     )
 
     def __str__(self):
@@ -109,25 +112,24 @@ class PilotsInformations(models.Model):
 
     position = models.CharField(
         max_length=50,
-        help_text='Enter a pilot position',
+        help_text='Enter a pilot position.',
         verbose_name='Pilot position'
     )
 
     rank = models.CharField(
         max_length=50,
-        help_text='Enter a pilot rank',
+        help_text='Enter a pilot rank.',
         verbose_name='Pilot rank'
     )
 
-    age = models.CharField(
-        max_length=50,
-        help_text='Enter a pilot age',
+    age = models.PositiveSmallIntegerField(
+        help_text='Enter a pilot age.',
         verbose_name='Pilot age'
     )
 
     country = models.CharField(
         max_length=50,
-        help_text='Enter a pilot country',
+        help_text='Enter a pilot country.',
         verbose_name='Pilot country'
     )
 

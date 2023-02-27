@@ -6,4 +6,3 @@ $D_C up -d &&
 $D_C $E_A_PY_MANAGE makemigrations &&
 $D_C $E_A_PY_MANAGE migrate &&
 $D_C $E_A_PY_MANAGE createsuperuser
-

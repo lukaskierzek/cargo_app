@@ -90,7 +90,8 @@ class AircraftsAdmin(admin.ModelAdmin):
         "__str__",
         "country",
         "destination",
-        "gets_cargo"
+        "get_cargos",
+        "get_pilots"
     )
 
     list_filter = (
@@ -121,6 +122,7 @@ class DestinationsAdmin(admin.ModelAdmin):
         "__str__",
         "from_airport",
         "to_airport",
+        "get_aircrafts",
     )
 
     list_filter = (
@@ -144,6 +146,7 @@ class CargosAdmin(admin.ModelAdmin):
         "__str__",
         "name",
         "quantity",
+        "get_aircrafts"
     )
 
     list_filter = (

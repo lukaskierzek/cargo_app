@@ -3,7 +3,7 @@ from django.db import models
 
 class Cargos(models.Model):
     name = models.CharField(
-        max_length=50,
+        max_length=255,
         help_text="Enter a cargo name.",
         verbose_name="Cargo name"
     )
@@ -23,13 +23,13 @@ class Cargos(models.Model):
 
 class Destinations(models.Model):
     from_airport = models.CharField(
-        max_length=50,
+        max_length=255,
         help_text="Enter a airport name from the plane will take off.",
         verbose_name="Airport name from the plane will take off"
     )
 
     to_airport = models.CharField(
-        max_length=50,
+        max_length=255,
         help_text="Enter a airport name where the plane will land.",
         verbose_name="Airport name where the plane will land"
     )
@@ -44,13 +44,13 @@ class Destinations(models.Model):
 
 class Aircrafts(models.Model):
     name = models.CharField(
-        max_length=50,
+        max_length=255,
         help_text="Enter a aircraft name.",
         verbose_name="Aircraft name"
     )
 
     country = models.CharField(
-        max_length=50,
+        max_length=255,
         help_text="Enter a country name that owns the aircraft.",
         verbose_name="Country name that owns the aircraft"
     )
@@ -70,6 +70,9 @@ class Aircrafts(models.Model):
     def __str__(self):
         return f"{self.name} ({self.country})"
 
+    def gets_cargo(self):
+        return [cargo.__str__() for cargo in self.cargo.all()]
+
     class Meta:
         verbose_name = "Aircraft"
         verbose_name_plural = "Aircrafts"
@@ -77,13 +80,13 @@ class Aircrafts(models.Model):
 
 class Pilots(models.Model):
     first_name = models.CharField(
-        max_length=50,
+        max_length=255,
         help_text="Enter a pilot first name.",
         verbose_name="Pilot first name"
     )
 
     last_name = models.CharField(
-        max_length=50,
+        max_length=255,
         help_text="Enter a pilot last name.",
         verbose_name="Pilot last name"
     )
@@ -111,13 +114,13 @@ class PilotsInformations(models.Model):
     )
 
     position = models.CharField(
-        max_length=50,
+        max_length=255,
         help_text='Enter a pilot position.',
         verbose_name='Pilot position'
     )
 
     rank = models.CharField(
-        max_length=50,
+        max_length=255,
         help_text='Enter a pilot rank.',
         verbose_name='Pilot rank'
     )
@@ -128,7 +131,7 @@ class PilotsInformations(models.Model):
     )
 
     country = models.CharField(
-        max_length=50,
+        max_length=255,
         help_text='Enter a pilot country.',
         verbose_name='Pilot country'
     )

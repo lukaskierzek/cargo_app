@@ -86,10 +86,6 @@ class PilotsInformationsAdmin(admin.ModelAdmin):
 
 @admin.register(Aircrafts)
 class AircraftsAdmin(admin.ModelAdmin):
-    @staticmethod
-    def gets_cargo(obj):
-        return [cargo.__str__() for cargo in obj.cargo.all()]
-
     list_display = (
         "__str__",
         "country",

@@ -16,6 +16,9 @@ class Cargos(models.Model):
     def __str__(self):
         return f"{self.name}: {self.quantity}"
 
+    def get_aircrafts(self):
+        return [aircraft for aircraft in self.aircrafts_set.all()]
+
     class Meta:
         verbose_name = "Cargo"
         verbose_name_plural = "Cargos"
@@ -36,6 +39,9 @@ class Destinations(models.Model):
 
     def __str__(self):
         return f"{self.from_airport} - {self.to_airport}"
+
+    def get_aircrafts(self):
+        return [aircraft for aircraft in self.aircrafts_set.all()]
 
     class Meta:
         verbose_name = "Destination"
@@ -70,8 +76,11 @@ class Aircrafts(models.Model):
     def __str__(self):
         return f"{self.name} ({self.country})"
 
-    def gets_cargo(self):
+    def get_cargos(self):
         return [cargo.__str__() for cargo in self.cargo.all()]
+
+    def get_pilots(self):
+        return [pilot for pilot in self.pilots_set.all()]
 
     class Meta:
         verbose_name = "Aircraft"

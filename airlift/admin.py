@@ -13,6 +13,22 @@ class PilotsInformationsInline(admin.StackedInline):
     ]
 
 
+class AircraftsInline(admin.TabularInline):
+    model = Aircrafts
+    extra = 0
+    fields = [
+        "name",
+        "country",
+        "destination",
+        "cargo"
+    ]
+
+
+class CargosAircraftsInline(admin.TabularInline):
+    model = Aircrafts.cargo.through
+    extra = 0
+
+
 @admin.register(Pilots)
 class PilotsAdmin(admin.ModelAdmin):
     list_display = (
@@ -99,12 +115,50 @@ class AircraftsAdmin(admin.ModelAdmin):
 
     search_help_text = "Serach for information by country, destination or cargo."
 
+    inlines = (CargosAircraftsInline,)
+    exclude = ('cargo',)
+
 
 @admin.register(Destinations)
 class DestinationsAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        "__str__",
+        "from_airport",
+        "to_airport",
+    )
+
+    list_filter = (
+        "from_airport",
+        "to_airport"
+    )
+
+    search_fields = (
+        "from_airport",
+        "to_airport"
+    )
+
+    search_help_text = "Serach for information by from airport or to airport."
+
+    inlines = (AircraftsInline,)
 
 
 @admin.register(Cargos)
 class CargosAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        "__str__",
+        "name",
+        "quantity",
+    )
+
+    list_filter = (
+        "name",
+    )
+
+    search_fields = (
+        "name",
+        "quantity"
+    )
+
+    search_help_text = "Serach for information by name or quantity."
+
+    inlines = (CargosAircraftsInline,)

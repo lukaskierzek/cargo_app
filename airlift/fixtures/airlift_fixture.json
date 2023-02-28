@@ -8,6 +8,14 @@
     }
   },
   {
+    "model": "airlift.cargos",
+    "pk": 2,
+    "fields": {
+      "name": "M107 projectile",
+      "quantity": 2137
+    }
+  },
+  {
     "model": "airlift.destinations",
     "pk": 1,
     "fields": {
@@ -23,7 +31,8 @@
       "country": "Poland",
       "destination": 1,
       "cargo": [
-        1
+        1,
+        2
       ]
     }
   },

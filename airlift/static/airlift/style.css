@@ -1,1 +1,60 @@
 @charset "UTF-8";
+
+p {
+  color: blue;
+  font-family: "Courier New", serif;
+  font-size: 40px;
+}
+
+html {
+  background-color: grey;
+}
+
+body {
+  margin: 0 auto;
+  width: 80%;
+}
+
+header {
+  color: green;
+}
+
+nav {
+  color: blue;
+  width: 20%;
+}
+
+main {
+  color: yellow;
+  width: 80%
+}
+
+footer {
+  color: brown;
+  text-align: center;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border: 1px solid;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#noscript {
+  font-weight: bold;
+}
+
+#main_content {
+  display: flex;
+}
+

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 
 class Cargos(models.Model):
     name = models.CharField(
@@ -42,6 +42,14 @@ class Destinations(models.Model):
 
     def get_aircrafts(self):
         return [aircraft for aircraft in self.aircrafts_set.all()]
+
+    def get_absolute_url(self):
+        return reverse(
+            'airlift:destination',
+            kwargs={
+                'pk', self.id
+            }
+        )
 
     class Meta:
         verbose_name = "Destination"

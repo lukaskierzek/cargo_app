@@ -1,5 +1,6 @@
-from django.db.models import QuerySet
 from django.shortcuts import render
+from django.views.generic import DetailView, ListView
+
 from .models import Destinations, Cargos, Pilots, Aircrafts
 
 
@@ -23,3 +24,21 @@ def index_view(request):
         template_name='airlift/index.html',
         context=context
     )
+
+
+class DestinationsDetailView(DetailView):
+    model = Destinations
+    template_name = 'airlift/destinations_detail.html'
+    context_object_name = 'destination'
+
+
+class DestinationsListViews(ListView):
+    model = Destinations
+    template_name = 'airlift/destinations.html'
+    context_object_name = 'destinations'
+
+
+class AircraftsListViews(ListView):
+    model = Aircrafts
+    template_name = 'airlift/aircrafts.html'
+    context_object_name = 'aircrafts'

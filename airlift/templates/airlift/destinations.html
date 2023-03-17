@@ -1,0 +1,39 @@
+{% extends 'airlift/base.html' %}
+
+{% block title %}
+  DESTINATIONS
+{% endblock %}
+
+{% block header %}
+  DESTINATIONS
+{% endblock %}
+
+{% block page_content %}
+  Witaj w destinations list!
+  <table>
+    <caption>Latest flights</caption>
+    <thead>
+      <tr>
+        <th>From airport</th>
+        <th>To airport</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for destination in destinations %}
+        <tr>
+          <td>{{ destination.from_airport }}</td>
+          <td>{{ destination.to_airport }}</td>
+          <td><a href="{{ destination.get_absolute_url }}"> Details</a></td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="3">Sorry, there are no destinations!</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
+
+

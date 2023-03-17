@@ -16,23 +16,24 @@ body {
 }
 
 header {
-  color: green;
+  padding: 20px 0 20px 40px;
+  background-color: dimgrey;
 }
 
 nav {
-  color: blue;
   width: 20%;
+  background-color: darkseagreen;
 }
 
 main {
-  color: yellow;
-  width: 80%
+  width: 80%;
+  background-color: slategrey;
 }
 
 footer {
-  color: brown;
   text-align: center;
   padding: 10px;
+  background-color: darkgrey;
 }
 
 table {

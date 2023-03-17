@@ -23,7 +23,7 @@
         <tr>
           <td>{{ flight.from_airport }}</td>
           <td>{{ flight.to_airport }}</td>
-          <td><a href="#"> Details</a></td>
+          <td><a href="{{ flight.get_absolute_url }}"> Details</a></td>
         </tr>
       {% empty %}
         <tr>

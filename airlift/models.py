@@ -45,9 +45,9 @@ class Destinations(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            'airlift:destination',
+            'airlift:destinations_detail',
             kwargs={
-                'pk', self.id
+                'pk': self.pk
             }
         )
 

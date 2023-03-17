@@ -1,0 +1,24 @@
+{% extends 'airlift/base.html' %}
+
+{% block title %}
+  {{ destination }}
+{% endblock %}
+
+{% block header %}
+  DESTINATION: {{ destination }}
+{% endblock %}
+
+{% block page_content %}
+  Witaj w destination! {{ destination.pk }}
+  {{ destination.from_airport }}
+  {{ destination.to_airport }}
+  {% for aircraft in destination.get_aircrafts %}
+    <p>{{ aircraft }}</p>
+
+    {% for pilot in aircraft.get_pilots %}
+      <p>{{ pilot.first_name }} {{ pilot.last_name }}</p>
+    {% endfor %}
+  {% endfor %}
+{% endblock %}
+
+

@@ -29,16 +29,28 @@ def index_view(request):
 class DestinationsDetailView(DetailView):
     model = Destinations
     template_name = 'airlift/destinations_detail.html'
-    context_object_name = 'destination'
+    context_object_name = 'flights'
 
 
 class DestinationsListViews(ListView):
     model = Destinations
     template_name = 'airlift/destinations.html'
-    context_object_name = 'destinations'
+    context_object_name = 'flights'
 
 
 class AircraftsListViews(ListView):
     model = Aircrafts
     template_name = 'airlift/aircrafts.html'
     context_object_name = 'aircrafts'
+
+
+class PilotsListViews(ListView):
+    model = Pilots
+    template_name = 'airlift/pilots.html'
+    context_object_name = 'pilots'
+
+
+class CargosListViews(ListView):
+    model = Cargos
+    template_name = 'airlift/cargos.html'
+    context_object_name = 'cargos'

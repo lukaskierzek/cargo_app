@@ -11,110 +11,21 @@
 {% block page_content %}
   <table>
     <caption>Latest flights</caption>
-    <thead>
-      <tr>
-        <th>From airport</th>
-        <th>To airport</th>
-        <th>Options</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for flight in flights %}
-        <tr>
-          <td>{{ flight.from_airport }}</td>
-          <td>{{ flight.to_airport }}</td>
-          <td><a href="{{ flight.get_absolute_url }}"> Details</a></td>
-        </tr>
-      {% empty %}
-        <tr>
-          <td colspan="3">Sorry, there are no destinations!</td>
-        </tr>
-      {% endfor %}
-    </tbody>
+    {% include 'airlift/destinations_list_table_content.html' %}
   </table>
   <hr>
   <table>
     <caption>Latest aircraft</caption>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Country</th>
-        <th>Flight from to</th>
-        <th>Options</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for aircraft in aircrafts %}
-        <tr>
-          <td>{{ aircraft.name }}</td>
-          <td>{{ aircraft.country }}</td>
-          <td>{{ aircraft.destination }}</td>
-          <td><a href="#"> Details</a></td>
-        </tr>
-      {% empty %}
-        <tr>
-          <td colspan="4">Sorry, there are no aircrafts!</td>
-        </tr>
-      {% endfor %}
-    </tbody>
+    {% include 'airlift/aircrafts_list_table_content.html' %}
   </table>
   <hr>
   <table>
     <caption>Latest cargos</caption>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Quantity</th>
-        <th>Options</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for cargo in cargos %}
-        <tr>
-          <td>{{ cargo.name }}</td>
-          <td>{{ cargo.quantity }}</td>
-          <td><a href="#"> Details</a></td>
-        </tr>
-      {% empty %}
-        <tr>
-          <td colspan="3">Sorry, there are no cargos!</td>
-        </tr>
-      {% endfor %}
-    </tbody>
+    {% include 'airlift/cargos_list_table_content.html' %}
   </table>
-    <hr>
+  <hr>
   <table>
     <caption>Latest pilots</caption>
-    <thead>
-      <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Aircraft</th>
-        <th>Position</th>
-        <th>Rank</th>
-        <th>Age</th>
-        <th>Country</th>
-        <th>Options</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for pilot in pilots %}
-        <tr>
-          <td>{{ pilot.first_name }}</td>
-          <td>{{ pilot.last_name }}</td>
-          <td>{{ pilot.aircraft }}</td>
-          <td>{{ pilot.pilotsinformations.position }}</td>
-          <td>{{ pilot.pilotsinformations.rank }}</td>
-          <td>{{ pilot.pilotsinformations.age }}</td>
-          <td>{{ pilot.pilotsinformations.country }}</td>
-          <td><a href="#"> Details</a></td>
-        </tr>
-      {% empty %}
-        <tr>
-          <td colspan="3">Sorry, there are no pilots!</td>
-        </tr>
-      {% endfor %}
-    </tbody>
+    {% include 'airlift/pilots_list_table_content.html' %}
   </table>
-
 {% endblock %}

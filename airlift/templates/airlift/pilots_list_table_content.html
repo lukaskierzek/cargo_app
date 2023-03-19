@@ -1,0 +1,30 @@
+<thead>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Aircraft</th>
+    <th>Position</th>
+    <th>Rank</th>
+    <th>Age</th>
+    <th>Country</th>
+    <th>Options</th>
+  </tr>
+</thead>
+  <tbody>
+  {% for pilot in pilots %}
+    <tr>
+      <td>{{ pilot.first_name }}</td>
+      <td>{{ pilot.last_name }}</td>
+      <td>{{ pilot.aircraft }}</td>
+      <td>{{ pilot.pilotsinformations.position }}</td>
+      <td>{{ pilot.pilotsinformations.rank }}</td>
+      <td>{{ pilot.pilotsinformations.age }}</td>
+      <td>{{ pilot.pilotsinformations.country }}</td>
+      <td><a href="#"> Details</a></td>
+    </tr>
+  {% empty %}
+    <tr>
+      <td colspan="3">Sorry, there are no pilots!</td>
+    </tr>
+  {% endfor %}
+</tbody>

@@ -1,0 +1,20 @@
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Quantity</th>
+    <th>Options</th>
+  </tr>
+</thead>
+<tbody>
+  {% for cargo in cargos %}
+    <tr>
+      <td>{{ cargo.name }}</td>
+      <td>{{ cargo.quantity }}</td>
+      <td><a href="#"> Details</a></td>
+    </tr>
+  {% empty %}
+    <tr>
+      <td colspan="3">Sorry, there are no cargos!</td>
+    </tr>
+  {% endfor %}
+</tbody>

@@ -16,6 +16,38 @@
     }
   },
   {
+    "model": "airlift.cargos",
+    "pk": 3,
+    "fields": {
+      "name": "Switchblade 600",
+      "quantity": 600
+    }
+  },
+  {
+    "model": "airlift.cargos",
+    "pk": 4,
+    "fields": {
+      "name": "PPZR Pioruns",
+      "quantity": 100
+    }
+  },
+  {
+    "model": "airlift.cargos",
+    "pk": 5,
+    "fields": {
+      "name": "Altius-600",
+      "quantity": 345
+    }
+  },
+  {
+    "model": "airlift.cargos",
+    "pk": 6,
+    "fields": {
+      "name": "Jump 20",
+      "quantity": 456
+    }
+  },
+  {
     "model": "airlift.destinations",
     "pk": 1,
     "fields": {
@@ -27,12 +59,27 @@
     "model": "airlift.aircrafts",
     "pk": 1,
     "fields": {
-      "name": "Lockheed C-130 Hercules",
+      "name": "Lockheed C-130 Hercules 1",
       "country": "Poland",
       "destination": 1,
       "cargo": [
         1,
-        2
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "model": "airlift.aircrafts",
+    "pk": 2,
+    "fields": {
+      "name": "Lockheed C-130 Hercules 2",
+      "country": "Poland",
+      "destination": 1,
+      "cargo": [
+        4,
+        5,
+        6
       ]
     }
   },
@@ -52,6 +99,44 @@
       "position": "First officer",
       "rank": "Captain",
       "age": "35",
+      "country": "Poland"
+    }
+  },
+  {
+    "model": "airlift.pilots",
+    "pk": 2,
+    "fields": {
+      "first_name": "Tomasz",
+      "last_name": "Kowalski",
+      "aircraft": 1
+    }
+  },
+  {
+    "model": "airlift.pilotsinformations",
+    "pk": 2,
+    "fields": {
+      "position": "First officer",
+      "rank": "Captain",
+      "age": "30",
+      "country": "Poland"
+    }
+  },
+  {
+    "model": "airlift.pilots",
+    "pk": 3,
+    "fields": {
+      "first_name": "Tomasz",
+      "last_name": "Nowak",
+      "aircraft": 2
+    }
+  },
+  {
+    "model": "airlift.pilotsinformations",
+    "pk": 3,
+    "fields": {
+      "position": "Second officer",
+      "rank": "Captain",
+      "age": "25",
       "country": "Poland"
     }
   }

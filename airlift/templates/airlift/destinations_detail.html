@@ -9,14 +9,27 @@
 {% endblock %}
 
 {% block page_content %}
-  {{ flights.pk }}
-  {{ flights.from_airport }}
-  {{ flights.to_airport }}
-  {% for aircraft in flights.get_aircrafts %}
-    <p>{{ aircraft }}</p>
+  <p>From: {{ flights.from_airport }}</p>
+  <p>To: {{ flights.to_airport }}</p>
+  <p>Aircrafts on this flight:</p>
+  <ul>
+    <li>
+      {% for aircraft in flights.get_aircrafts %}
+      <p>Aircraft name: {{ aircraft }}</p>
+      <p>Pilots in this airplane:
+        {% for pilot in aircraft.get_pilots %}
+          {{ pilot.first_name }} {{ pilot.last_name }};
+        {% endfor %}
+      </p>
+      <p>Cargos in this airplane:
+        {% for cargo in aircraft.get_cargos %}
+          "{{ cargo.name }}", qty: {{ cargo.quantity }};
+        {% endfor %}
+      </p>
+      <hr>
+      {% endfor %}
+    </li>
+  </ul>
 
-    {% for pilot in aircraft.get_pilots %}
-      <p>{{ pilot.first_name }} {{ pilot.last_name }}</p>
-    {% endfor %}
-  {% endfor %}
+
 {% endblock %}

@@ -85,7 +85,7 @@ class Aircrafts(models.Model):
         return f"{self.name} ({self.country})"
 
     def get_cargos(self):
-        return [cargo.__str__() for cargo in self.cargo.all()]
+        return [cargo for cargo in self.cargo.all()]
 
     def get_pilots(self):
         return [pilot for pilot in self.pilots_set.all()]

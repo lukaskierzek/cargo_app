@@ -1,11 +1,5 @@
 @charset "UTF-8";
 
-p {
-  color: blue;
-  font-family: "Courier New", serif;
-  font-size: 40px;
-}
-
 html {
   background-color: grey;
 }
@@ -17,23 +11,26 @@ body {
 
 header {
   padding: 20px 0 20px 40px;
-  background-color: dimgrey;
+  background-color: darkgrey;
+  border-bottom: 2px solid;
 }
 
 nav {
   width: 20%;
-  background-color: lightgrey;
+  background-color: darkgrey;
 }
 
 main {
   width: 80%;
-  background-color: slategrey;
+  background-color: darkgrey;
+  border-left: 2px solid;
 }
 
 footer {
   text-align: center;
   padding: 10px;
   background-color: darkgrey;
+  border-top: 2px solid;
 }
 
 table {

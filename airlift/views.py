@@ -7,10 +7,10 @@ from .models import Destinations, Cargos, Pilots, Aircrafts
 # Create your views here.
 
 def index_view(request):
-    flights = Destinations.objects.all()[:5]
-    aircrafts = Aircrafts.objects.all()[:5]
-    cargos = Cargos.objects.all()[:5]
-    pilots = Pilots.objects.all()[:5]
+    flights = Destinations.objects.all()[:4]
+    aircrafts = Aircrafts.objects.all()[:4]
+    cargos = Cargos.objects.all()[:4]
+    pilots = Pilots.objects.all()[:4]
 
     context = {
         'flights': flights,

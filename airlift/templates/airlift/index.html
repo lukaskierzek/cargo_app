@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block header %}
-  main page
+  MAIN PAGE
 {% endblock %}
 
 {% block page_content %}
@@ -13,19 +13,23 @@
     <caption>Latest flights</caption>
     {% include 'airlift/destinations_list_table_content.html' %}
   </table>
+  <a href="{% url 'airlift:destinations' %}">More flights</a>
   <hr>
   <table>
     <caption>Latest aircraft</caption>
     {% include 'airlift/aircrafts_list_table_content.html' %}
   </table>
+  <a href="{% url 'airlift:aircrafts' %}">More aircrafts</a>
   <hr>
   <table>
     <caption>Latest cargos</caption>
     {% include 'airlift/cargos_list_table_content.html' %}
   </table>
+  <a href="{% url 'airlift:cargos' %}">More cargos</a>
   <hr>
   <table>
     <caption>Latest pilots</caption>
     {% include 'airlift/pilots_list_table_content.html' %}
   </table>
+  <a href="{% url 'airlift:pilots' %}">More pilots</a>
 {% endblock %}

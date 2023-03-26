@@ -25,11 +25,14 @@
     <div id="main_content">
       <nav>
         <ul>
-          <li><a href="{% url 'airlift:index_view' %}">Main page</a></li>
-          <li><a href="{% url 'airlift:destinations' %}">Destinations</a></li>
-          <li><a href="{% url 'airlift:aircrafts' %}">Aircrafts</a></li>
-          <li><a href="{% url 'airlift:cargos' %}">Cargos</a></li>
-          <li><a href="{% url 'airlift:pilots' %}">Pilots</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'airlift:index_view' %}">Main page</a></li>
+            <li><a href="{% url 'airlift:destinations' %}">Destinations</a></li>
+            <li><a href="{% url 'airlift:aircrafts' %}">Aircrafts</a></li>
+            <li><a href="{% url 'airlift:cargos' %}">Cargos</a></li>
+            <li><a href="{% url 'airlift:pilots' %}">Pilots</a></li>
+            <li><a href="{% url 'logout' %}?next={% url 'login' %}">Sign out</a></li>
+          {% endif %}
         </ul>
       </nav>
       <main>

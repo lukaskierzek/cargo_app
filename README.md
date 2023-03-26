@@ -9,6 +9,8 @@ You need to install Docker. After installing Docker, use the command ```sh scrip
 
 For the next application launch, use the command ```docker compose up```.
 
+To sign in to the site use the user to sign in to admin.
+
 If you want to connect to the database use the command ```sh scripts/connect_to_database.sh```.
 
 If you want to enter to webpage type ```localhost:80```.

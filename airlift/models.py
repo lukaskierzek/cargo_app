@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+
 class Cargos(models.Model):
     name = models.CharField(
         max_length=255,
@@ -18,6 +19,14 @@ class Cargos(models.Model):
 
     def get_aircrafts(self):
         return [aircraft for aircraft in self.aircrafts_set.all()]
+
+    def get_absolute_url(self):
+        return reverse(
+            'airlift:cargos_detail',
+            kwargs={
+                'pk': self.pk
+            }
+        )
 
     class Meta:
         verbose_name = "Cargo"
@@ -90,6 +99,14 @@ class Aircrafts(models.Model):
     def get_pilots(self):
         return [pilot for pilot in self.pilots_set.all()]
 
+    def get_absolute_url(self):
+        return reverse(
+            'airlift:aircrafts_detail',
+            kwargs={
+                'pk': self.pk
+            }
+        )
+
     class Meta:
         verbose_name = "Aircraft"
         verbose_name_plural = "Aircrafts"
@@ -117,6 +134,14 @@ class Pilots(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+    def get_absolute_url(self):
+        return reverse(
+            'airlift:pilots_detail',
+            kwargs={
+                'pk': self.pk
+            }
+        )
 
     class Meta:
         verbose_name = "Pilot information"

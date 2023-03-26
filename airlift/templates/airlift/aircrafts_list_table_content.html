@@ -12,7 +12,7 @@
       <td>{{ aircraft.name }}</td>
       <td>{{ aircraft.country }}</td>
       <td>{{ aircraft.destination }}</td>
-      <td><a href="#"> Details</a></td>
+      <td><a href="{{ aircraft.get_absolute_url }}"> Details</a></td>
     </tr>
   {% empty %}
     <tr>

@@ -10,7 +10,7 @@
     <tr>
       <td>{{ cargo.name }}</td>
       <td>{{ cargo.quantity }}</td>
-      <td><a href="#"> Details</a></td>
+      <td><a href="{{ cargo.get_absolute_url }}"> Details</a></td>
     </tr>
   {% empty %}
     <tr>

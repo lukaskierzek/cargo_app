@@ -19,7 +19,11 @@ urlpatterns.extend([
         include([
             path(
                 '',
-                views.DestinationsListViews.as_view(),
+                views.DestinationsListViews.as_view(
+                    extra_context={
+                        'title': 'destinations',
+                    }
+                ),
                 name='destinations'
             ),
             path(
@@ -41,6 +45,11 @@ urlpatterns.extend([
                 views.AircraftsListViews.as_view(),
                 name='aircrafts'
             ),
+            path(
+                '<int:pk>',
+                views.AircraftsDetailView.as_view(),
+                name='aircrafts_detail'
+            )
         ])
     ),
 ])
@@ -55,6 +64,11 @@ urlpatterns.extend([
                 views.PilotsListViews.as_view(),
                 name='pilots'
             ),
+            path(
+                '<int:pk>',
+                views.PilotsDetailView.as_view(),
+                name='pilots_detail'
+            ),
         ])
     ),
 ])
@@ -68,6 +82,11 @@ urlpatterns.extend([
                 '',
                 views.CargosListViews.as_view(),
                 name='cargos'
+            ),
+            path(
+                '<int:pk>',
+                views.CargosDetailViews.as_view(),
+                name='cargos_detail'
             ),
         ])
     ),

@@ -20,7 +20,7 @@
       <td>{{ pilot.pilotsinformations.rank }}</td>
       <td>{{ pilot.pilotsinformations.age }}</td>
       <td>{{ pilot.pilotsinformations.country }}</td>
-      <td><a href="#"> Details</a></td>
+      <td><a href="{{ pilot.get_absolute_url }}"> Details</a></td>
     </tr>
   {% empty %}
     <tr>

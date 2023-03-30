@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'airlift.apps.AirliftConfig',
+    'airlift_api.apps.AirliftApiConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

@@ -22,4 +22,5 @@ urlpatterns = [
     path('airlift/', include('airlift.urls')),
     path('', RedirectView.as_view(url='airlift/')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('airlift/api/', include('airlift_api.urls')),
 ]

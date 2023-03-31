@@ -1,6 +1,7 @@
 from rest_framework import viewsets
-from airlift.models import Cargos, Destinations, Aircrafts, Pilots, PilotsInformations
-from .serializer import CargosSerializer, DestinationsSerializer, AircraftsSerializer, PilotsSerializer, PilotsInformationsSerializer
+
+from airlift.models import Cargos, Destinations, Aircrafts, PilotsInformations
+from .serializer import CargosSerializer, DestinationsSerializer, AircraftsSerializer, PilotsInformationsSerializer
 
 
 class CargosViewSet(viewsets.ReadOnlyModelViewSet):

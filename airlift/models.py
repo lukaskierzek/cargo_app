@@ -181,6 +181,14 @@ class PilotsInformations(models.Model):
     def __str__(self):
         return f"{self.position}\n{self.rank}\n{self.age}\n{self.country}"
 
+    def get_absolute_url(self):
+        return reverse(
+            'airlift:pilots_detail',
+            kwargs={
+                'pk': self.pk
+            }
+        )
+
     class Meta:
         verbose_name = 'Pilot additional information'
         verbose_name_plural = 'Pilot additional informations'

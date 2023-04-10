@@ -32,6 +32,11 @@ urlpatterns.extend([
                 views.DestinationsDetailView.as_view(),
                 name='destinations_detail'
             ),
+            path(
+                '<int:pk>/update',
+                views.DestinationsUpdate.as_view(),
+                name='destinations_update'
+            )
         ])
     ),
 ])
@@ -50,6 +55,11 @@ urlpatterns.extend([
                 '<int:pk>',
                 views.AircraftsDetailView.as_view(),
                 name='aircrafts_detail'
+            ),
+            path(
+                '<int:pk>/update',
+                views.AircraftsUpdate.as_view(),
+                name='aircrafts_update'
             )
         ])
     ),
@@ -70,6 +80,16 @@ urlpatterns.extend([
                 views.PilotsDetailView.as_view(),
                 name='pilots_detail'
             ),
+            path(
+                '<int:pk>/update-basic-information',
+                views.PilotsUpdate.as_view(),
+                name='pilots_update'
+            ),
+            path(
+                '<int:pk>/update-additional-information',
+                views.PilotsInformationsUpdate.as_view(),
+                name='pilots_informations_update'
+            ),
         ])
     ),
 ])
@@ -89,6 +109,11 @@ urlpatterns.extend([
                 views.CargosDetailViews.as_view(),
                 name='cargos_detail'
             ),
+            path(
+                '<int:pk>/update',
+                views.CargosUpdate.as_view(),
+                name='cargos_update'
+            )
         ])
     ),
 ])

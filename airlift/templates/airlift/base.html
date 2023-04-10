@@ -31,6 +31,8 @@
             <li><a href="{% url 'airlift:aircrafts' %}">Aircrafts</a></li>
             <li><a href="{% url 'airlift:cargos' %}">Cargos</a></li>
             <li><a href="{% url 'airlift:pilots' %}">Pilots</a></li>
+            <hr>
+            <li><a href="/admin/">Admin page</a></li>
             <li><a href="{% url 'logout' %}?next={% url 'login' %}">Sign out</a></li>
           {% endif %}
         </ul>

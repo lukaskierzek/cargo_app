@@ -1,0 +1,21 @@
+{% extends 'airlift/base.html' %}
+
+{% block title %}
+  {{ pilot }}
+{% endblock %}
+
+{% block header %}
+  UPDATE BASIC INFORMATION: {{ pilot }}
+{% endblock %}
+
+{% block page_content %}
+	<section>
+    <form method="POST">
+      {% csrf_token %}
+      <table>
+        {{ form.as_table }}
+      </table>
+      <input type="submit" value="Update">
+    </form>
+	</section>
+{% endblock %}

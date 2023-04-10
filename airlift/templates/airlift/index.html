@@ -9,27 +9,35 @@
 {% endblock %}
 
 {% block page_content %}
-  <table>
-    <caption>Latest flights</caption>
-    {% include 'airlift/destinations_list_table_content.html' %}
-  </table>
-  <a href="{% url 'airlift:destinations' %}">More flights</a>
+	<section>
+		<table>
+			<caption>Latest flights</caption>
+			{% include 'airlift/destinations_list_table_content.html' %}
+		</table>
+		<a href="{% url 'airlift:destinations' %}">More flights</a>
+	</section>
   <hr>
-  <table>
-    <caption>Latest aircraft</caption>
-    {% include 'airlift/aircrafts_list_table_content.html' %}
-  </table>
-  <a href="{% url 'airlift:aircrafts' %}">More aircrafts</a>
+	<section>
+		<table>
+			<caption>Latest aircraft</caption>
+			{% include 'airlift/aircrafts_list_table_content.html' %}
+		</table>
+		<a href="{% url 'airlift:aircrafts' %}">More aircrafts</a>
+	</section>
   <hr>
-  <table>
-    <caption>Latest cargos</caption>
-    {% include 'airlift/cargos_list_table_content.html' %}
-  </table>
-  <a href="{% url 'airlift:cargos' %}">More cargos</a>
+	<section>
+		<table>
+			<caption>Latest cargos</caption>
+			{% include 'airlift/cargos_list_table_content.html' %}
+		</table>
+		<a href="{% url 'airlift:cargos' %}">More cargos</a>
+	</section>
   <hr>
-  <table>
-    <caption>Latest pilots</caption>
-    {% include 'airlift/pilots_list_table_content.html' %}
-  </table>
-  <a href="{% url 'airlift:pilots' %}">More pilots</a>
+	<section>
+		<table>
+			<caption>Latest pilots</caption>
+			{% include 'airlift/pilots_list_table_content.html' %}
+		</table>
+		<a href="{% url 'airlift:pilots' %}">More pilots</a>
+	</section>
 {% endblock %}

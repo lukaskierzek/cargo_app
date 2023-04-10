@@ -1,9 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, UpdateView
 
-from .models import Destinations, Cargos, Pilots, Aircrafts
+from .models import Destinations, Cargos, Pilots, Aircrafts, PilotsInformations
 
 
 # Create your views here.
@@ -32,13 +32,23 @@ def index_view(request):
 class DestinationsDetailView(LoginRequiredMixin, DetailView):
     model = Destinations
     template_name = 'airlift/destinations_detail.html'
-    context_object_name = 'flights'
+    context_object_name = 'flight'
 
 
 class DestinationsListViews(LoginRequiredMixin, ListView):
     model = Destinations
     template_name = 'airlift/destinations.html'
     context_object_name = 'flights'
+
+
+class DestinationsUpdate(LoginRequiredMixin, UpdateView):
+    model = Destinations
+    fields = [
+        'from_airport',
+        'to_airport',
+    ]
+    template_name = 'airlift/destinations_form.html'
+    context_object_name = 'flight'
 
 
 class AircraftsDetailView(LoginRequiredMixin, DetailView):
@@ -53,6 +63,13 @@ class AircraftsListViews(LoginRequiredMixin, ListView):
     context_object_name = 'aircrafts'
 
 
+class AircraftsUpdate(LoginRequiredMixin, UpdateView):
+    model = Aircrafts
+    fields = '__all__'
+    template_name = 'airlift/aircrafts_form.html'
+    context_object_name = 'aircraft'
+
+
 class PilotsDetailView(LoginRequiredMixin, DetailView):
     model = Pilots
     template_name = 'airlift/pilots_detail.html'
@@ -65,6 +82,20 @@ class PilotsListViews(LoginRequiredMixin, ListView):
     context_object_name = 'pilots'
 
 
+class PilotsUpdate(LoginRequiredMixin, UpdateView):
+    model = Pilots
+    fields = '__all__'
+    template_name = 'airlift/pilots_form.html'
+    context_object_name = 'pilot'
+
+
+class PilotsInformationsUpdate(LoginRequiredMixin, UpdateView):
+    model = PilotsInformations
+    fields = '__all__'
+    template_name = 'airlift/pilots_informations_form.html'
+    context_object_name = 'pilots_informations'
+
+
 class CargosDetailViews(LoginRequiredMixin, DetailView):
     model = Cargos
     template_name = 'airlift/cargos_detail.html'
@@ -75,3 +106,10 @@ class CargosListViews(LoginRequiredMixin, ListView):
     model = Cargos
     template_name = 'airlift/cargos.html'
     context_object_name = 'cargos'
+
+
+class CargosUpdate(LoginRequiredMixin, UpdateView):
+    model = Cargos
+    fields = '__all__'
+    template_name = 'airlift/cargos_form.html'
+    context_object_name = 'cargo'

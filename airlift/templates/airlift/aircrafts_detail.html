@@ -9,31 +9,34 @@
 {% endblock %}
 
 {% block page_content %}
-  <p>Name: {{ aircraft.name }}</p>
-  <p>Country: {{ aircraft.country }}</p>
-  <p>Destination: {{ aircraft.destination }} | <a href="{{ aircraft.destination.get_absolute_url }}">Details</a></p>
-  <p>Cargos:</p>
-  <ul>
-    <li>
-      <p>
-        {% for cargo in aircraft.get_cargos %}
-          Cargo name: {{ cargo.name }}<br>
-          Quantity: {{ cargo.quantity }}<br>
-          <a href="{{ cargo.get_absolute_url }}">Details</a><hr>
-        {% endfor %}
-      </p>
-    </li>
-  </ul>
-  <p>Pilots:</p>
-  <ul>
-    <li>
-      <p>
-        {% for pilot in aircraft.get_pilots %}
-          First name: {{ pilot.first_name }}<br>
-          Last name: {{ pilot.last_name }}<br>
-          <a href="{{ pilot.get_absolute_url }}">Details</a><hr>
-        {% endfor %}
-      </p>
-    </li>
-  </ul>
+	<section>
+    <p><a href="{% url 'airlift:aircrafts_update' pk=aircraft.id %}">EDIT AIRCRAFT</a></p>
+		<p>Name: {{ aircraft.name }}</p>
+		<p>Country: {{ aircraft.country }}</p>
+		<p>Destination: {{ aircraft.destination }} | <a href="{{ aircraft.destination.get_absolute_url }}">Details</a></p>
+	</section>
+  <section>
+		<p>Cargos:</p>
+		<ul>
+			<li>
+				{% for cargo in aircraft.get_cargos %}
+				Cargo name: {{ cargo.name }}<br>
+				Quantity: {{ cargo.quantity }}<br>
+				<a href="{{ cargo.get_absolute_url }}">Details</a><hr>
+				{% endfor %}
+			</li>
+		</ul>
+	</section>
+	<section>
+		<p>Pilots:</p>
+		<ul>
+			<li>
+				{% for pilot in aircraft.get_pilots %}
+					First name: {{ pilot.first_name }}<br>
+					Last name: {{ pilot.last_name }}<br>
+					<a href="{{ pilot.get_absolute_url }}">Details</a><hr>
+				{% endfor %}
+			</li>
+		</ul>
+	</section>
 {% endblock %}

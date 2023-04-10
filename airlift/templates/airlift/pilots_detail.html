@@ -9,11 +9,15 @@
 {% endblock %}
 
 {% block page_content %}
-  <p>First name: {{ pilot.first_name }}</p>
-  <p>Last name: {{ pilot.last_name }}</p>
-  <p>Position: {{ pilot.pilotsinformations.position }}</p>
-  <p>Rank: {{ pilot.pilotsinformations.rank }}</p>
-  <p>Age: {{ pilot.pilotsinformations.age }}</p>
-  <p>Country: {{ pilot.pilotsinformations.country }}</p>
-  <p>Aircraft name: <a href="{{ pilot.aircraft.get_absolute_url }}">{{ pilot.aircraft }}</a></p>
+	<section>
+    <p><a href="{% url 'airlift:pilots_update' pk=pilot.id %}">EDIT BASIC PILOT INFORMATION</a></p>
+    <p><a href="{% url 'airlift:pilots_informations_update' pk=pilot.id %}">EDIT ADDITIONAL PILOT INFORMATION</a></p>
+		<p>First name: {{ pilot.first_name }}</p>
+		<p>Last name: {{ pilot.last_name }}</p>
+		<p>Position: {{ pilot.pilotsinformations.position }}</p>
+		<p>Rank: {{ pilot.pilotsinformations.rank }}</p>
+		<p>Age: {{ pilot.pilotsinformations.age }}</p>
+		<p>Country: {{ pilot.pilotsinformations.country }}</p>
+		<p>Aircraft name: <a href="{{ pilot.aircraft.get_absolute_url }}">{{ pilot.aircraft }}</a></p>
+	</section>
 {% endblock %}

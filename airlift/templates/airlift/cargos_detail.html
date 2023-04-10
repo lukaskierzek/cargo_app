@@ -1,16 +1,18 @@
 {% extends 'airlift/base.html' %}
 
 {% block title %}
-  {{ cargos }}
+  {{ cargo }}
 {% endblock %}
 
 {% block header %}
-  CARGO: {{ cargos }}
+  CARGO: {{ cargo }}
 {% endblock %}
 
 {% block page_content %}
-  <p>Cargo name: {{ cargo.name }}</p>
-  <p>Quantity: {{ cargo.quantity }}</p>
-  <p>Aircraft with this cargo: {% for aircraft in cargo.get_aircrafts %}{{ aircraft }} | <a href="{{ aircraft.get_absolute_url }}">Details</a>{% endfor %}
-  </p>
+	<section>
+	  <p><a href="{% url 'airlift:cargos_update' pk=cargo.id %}">EDIT CARGO</a></p>
+    <p>Cargo name: {{ cargo.name }}</p>
+    <p>Quantity: {{ cargo.quantity }}</p>
+  	<p>Aircraft with this cargo: {% for aircraft in cargo.get_aircrafts %}{{ aircraft }} | <a href="{{ aircraft.get_absolute_url }}">Details</a>{% endfor %}</p>
+	</section>
 {% endblock %}

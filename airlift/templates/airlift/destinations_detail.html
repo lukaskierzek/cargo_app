@@ -13,6 +13,7 @@
 		<p><a href="{% url 'airlift:destinations_update' pk=flight.id %}">EDIT FLIGHT</a></p>
 		<p>From: {{ flight.from_airport }}</p>
 		<p>To: {{ flight.to_airport }}</p>
+		<p>Comment: {{ flight.comment }}</p>
 		<p>Aircrafts on this flight:</p>
 	</section>
 	<section>

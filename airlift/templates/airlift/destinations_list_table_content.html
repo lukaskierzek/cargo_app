@@ -2,6 +2,7 @@
   <tr>
     <th>From airport</th>
     <th>To airport</th>
+    <th>Comment</th>
     <th>Options</th>
   </tr>
 </thead>
@@ -10,11 +11,12 @@
     <tr>
       <td>{{ flight.from_airport }}</td>
       <td>{{ flight.to_airport }}</td>
+      <td>{{ flight.comment }}</td>
       <td><a href="{{ flight.get_absolute_url }}"> Details</a></td>
     </tr>
   {% empty %}
     <tr>
-      <td colspan="3">Sorry, there are no destinations!</td>
+      <td colspan="4">Sorry, there are no destinations!</td>
     </tr>
   {% endfor %}
 </tbody>

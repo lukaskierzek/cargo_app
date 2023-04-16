@@ -1,6 +1,5 @@
 from django.test import TestCase
 from django.urls import reverse
-from airlift.models import Destinations
 
 
 class ViewsTest(TestCase):
@@ -14,6 +13,10 @@ class ViewsTest(TestCase):
 
     # ----------tests for Destinations---------- #
 
+    def test_get_destination_update(self):
+        response = self.client.get(reverse('airlift:destinations_update', kwargs={'pk': 1}), follow=True)
+        self.assertEqual(response.status_code, 200)
+
     def test_get_destination_detail(self):
         response = self.client.get(reverse('airlift:destinations_detail', kwargs={'pk': 1}), follow=True)
         self.assertEqual(response.status_code, 200)
@@ -23,6 +26,10 @@ class ViewsTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     # ----------tests for Aircrafts---------- #
+
+    def test_get_aircraft_update(self):
+        response = self.client.get(reverse('airlift:aircrafts_update', kwargs={'pk': 1}), follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_get_aircraft_detail(self):
         response = self.client.get(reverse('airlift:aircrafts_detail', kwargs={'pk': 1}), follow=True)
@@ -34,6 +41,14 @@ class ViewsTest(TestCase):
 
     # ----------tests for Pilots---------- #
 
+    def test_get_pilot_basic_information_update(self):
+        response = self.client.get(reverse('airlift:pilots_update', kwargs={'pk': 1}), follow=True)
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_pilot_additional_information_update(self):
+        response = self.client.get(reverse('airlift:pilots_informations_update', kwargs={'pk': 1}), follow=True)
+        self.assertEqual(response.status_code, 200)
+
     def test_get_pilot_detail(self):
         response = self.client.get(reverse('airlift:pilots_detail', kwargs={'pk': 1}), follow=True)
         self.assertEqual(response.status_code, 200)
@@ -43,6 +58,10 @@ class ViewsTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     # ----------tests for Cargos---------- #
+
+    def test_get_cargo_update(self):
+        response = self.client.get(reverse('airlift:cargos_update', kwargs={'pk': 1}), follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_get_cargo_detail(self):
         response = self.client.get(reverse('airlift:cargos_detail', kwargs={'pk': 1}), follow=True)

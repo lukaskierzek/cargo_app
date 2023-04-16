@@ -3,69 +3,90 @@
     "model": "airlift.cargos",
     "pk": 1,
     "fields": {
-      "name": "MGM-140 ATACMS",
-      "quantity": 1000
+      "name": "Cargo 1",
+      "quantity": 100,
+      "comment": "Cargo 1 comment"
     }
   },
   {
     "model": "airlift.cargos",
     "pk": 2,
     "fields": {
-      "name": "M107 projectile",
-      "quantity": 2137
+      "name": "Cargo 2",
+      "quantity": 200,
+      "comment": "Cargo 2 comment"
     }
   },
   {
     "model": "airlift.cargos",
     "pk": 3,
     "fields": {
-      "name": "Switchblade 600",
-      "quantity": 600
+      "name": "Cargo 3",
+      "quantity": 300,
+      "comment": "Cargo 3 comment"
     }
   },
   {
     "model": "airlift.cargos",
     "pk": 4,
     "fields": {
-      "name": "PPZR Pioruns",
-      "quantity": 100
+      "name": "Cargo 4",
+      "quantity": 400,
+      "comment": "Cargo 4 comment"
     }
   },
   {
     "model": "airlift.cargos",
     "pk": 5,
     "fields": {
-      "name": "Altius-600",
-      "quantity": 345
+      "name": "Cargo 5",
+      "quantity": 500,
+      "comment": "Cargo 5 comment"
     }
   },
   {
     "model": "airlift.cargos",
     "pk": 6,
     "fields": {
-      "name": "Jump 20",
-      "quantity": 456
+      "name": "Cargo 6",
+      "quantity": 600,
+      "comment": "Cargo 6 comment"
+    }
+  },
+  {
+    "model": "airlift.cargos",
+    "pk": 7,
+    "fields": {
+      "name": "Cargo 7",
+      "quantity": 700,
+      "comment": "Cargo 7 comment"
     }
   },
   {
     "model": "airlift.destinations",
     "pk": 1,
     "fields": {
-      "from_airport": "Rzeszów International Airport",
-      "to_airport": "John Paul II International Airport Kraków-Balice"
+      "from_airport": "Airport 1",
+      "to_airport": "Airport 2",
+      "scheduled_take_off": "2023-04-11T17:12:45Z",
+      "scheduled_landing": "2023-05-17T18:13:49Z",
+      "comment": "Destinations comment"
     }
   },
   {
     "model": "airlift.aircrafts",
     "pk": 1,
     "fields": {
-      "name": "Lockheed C-130 Hercules 1",
-      "country": "Poland",
+      "name": "Aircraft 1",
+      "country": "Country 1",
       "destination": 1,
+      "comment": "Aircraft 1 comment",
       "cargo": [
         1,
         2,
-        3
+        3,
+        4,
+        5
       ]
     }
   },
@@ -73,13 +94,14 @@
     "model": "airlift.aircrafts",
     "pk": 2,
     "fields": {
-      "name": "Lockheed C-130 Hercules 2",
-      "country": "Poland",
+      "name": "Aircraft 2",
+      "country": "Country 1",
       "destination": 1,
+      "comment": "Aircraft 2 comment",
       "cargo": [
-        4,
         5,
-        6
+        6,
+        7
       ]
     }
   },
@@ -87,8 +109,8 @@
     "model": "airlift.pilots",
     "pk": 1,
     "fields": {
-      "first_name": "Jan",
-      "last_name": "Kowalski",
+      "first_name": "John",
+      "last_name": "Connor 1",
       "aircraft": 1
     }
   },
@@ -99,15 +121,16 @@
       "position": "First officer",
       "rank": "Captain",
       "age": "35",
-      "country": "Poland"
+      "country": "Country 1",
+      "comment": "John Connor 1 comment"
     }
   },
   {
     "model": "airlift.pilots",
     "pk": 2,
     "fields": {
-      "first_name": "Tomasz",
-      "last_name": "Kowalski",
+      "first_name": "John",
+      "last_name": "Connor 2",
       "aircraft": 1
     }
   },
@@ -118,15 +141,16 @@
       "position": "First officer",
       "rank": "Captain",
       "age": "30",
-      "country": "Poland"
+      "country": "Country 1",
+      "comment": "John Connor 2 comment"
     }
   },
   {
     "model": "airlift.pilots",
     "pk": 3,
     "fields": {
-      "first_name": "Tomasz",
-      "last_name": "Nowak",
+      "first_name": "John",
+      "last_name": "Connor 3",
       "aircraft": 2
     }
   },
@@ -137,7 +161,8 @@
       "position": "Second officer",
       "rank": "Captain",
       "age": "25",
-      "country": "Poland"
+      "country": "Country 1",
+      "comment": "John Connor 3 comment"
     }
   }
 ]

@@ -14,6 +14,13 @@ class Cargos(models.Model):
         verbose_name="Cargo quantity"
     )
 
+    comment = models.TextField(
+        help_text="Enter comment for cargo",
+        verbose_name="Cargo comment",
+        null=True,
+        blank=True
+    )
+
     def __str__(self):
         return f"{self.name}: {self.quantity}"
 
@@ -44,6 +51,21 @@ class Destinations(models.Model):
         max_length=255,
         help_text="Enter a airport name where the plane will land.",
         verbose_name="Airport name where the plane will land"
+    )
+
+    scheduled_take_off = models.DateTimeField(
+        help_text="Select a scheduled take off date and time."
+    )
+
+    scheduled_landing = models.DateTimeField(
+        help_text="Select a scheduled landing date and time."
+    )
+
+    comment = models.TextField(
+        help_text="Enter comment for destination.",
+        verbose_name="Destination comment",
+        null=True,
+        blank=True
     )
 
     def __str__(self):
@@ -87,6 +109,13 @@ class Aircrafts(models.Model):
 
     cargo = models.ManyToManyField(
         to=Cargos,
+        blank=True
+    )
+
+    comment = models.TextField(
+        help_text="Enter comment for aircraft.",
+        verbose_name="Aircraft comment",
+        null=True,
         blank=True
     )
 
@@ -176,6 +205,13 @@ class PilotsInformations(models.Model):
         max_length=255,
         help_text='Enter a pilot country.',
         verbose_name='Pilot country'
+    )
+
+    comment = models.TextField(
+        help_text="Enter comment for pilot.",
+        verbose_name="Pilot comment",
+        null=True,
+        blank=True
     )
 
     def __str__(self):

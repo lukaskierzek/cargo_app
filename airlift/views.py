@@ -46,6 +46,9 @@ class DestinationsUpdate(LoginRequiredMixin, UpdateView):
     fields = [
         'from_airport',
         'to_airport',
+        'scheduled_take_off',
+        'scheduled_landing',
+        'comment'
     ]
     template_name = 'airlift/destinations_form.html'
     context_object_name = 'flight'

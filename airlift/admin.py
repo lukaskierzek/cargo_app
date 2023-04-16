@@ -10,7 +10,8 @@ class PilotsInformationsInline(admin.StackedInline):
         "position",
         "rank",
         "age",
-        "country"
+        "country",
+        "comment"
     ]
 
 
@@ -21,7 +22,8 @@ class AircraftsInline(admin.TabularInline):
         "name",
         "country",
         "destination",
-        "cargo"
+        "cargo",
+        "comment"
     ]
 
 
@@ -48,9 +50,10 @@ class PilotsAdmin(admin.ModelAdmin):
         "last_name",
         "aircraft__name",
         "aircraft__country",
+        "comment"
     )
 
-    search_help_text = "Serach for information by first name, last name, aircraft name or aircraft country."
+    search_help_text = "Serach for information by first name, last name, aircraft name, aircraft country or comment."
 
     inlines = (PilotsInformationsInline,)
 
@@ -62,7 +65,8 @@ class PilotsInformationsAdmin(admin.ModelAdmin):
         "position",
         "rank",
         "age",
-        "country"
+        "country",
+        "comment"
     )
 
     list_filter = (
@@ -79,10 +83,11 @@ class PilotsInformationsAdmin(admin.ModelAdmin):
         "position",
         "rank",
         "age",
-        "country"
+        "country",
+        "comment"
     )
 
-    search_help_text = "Serach for information by pilot or aircraft name."
+    search_help_text = "Serach for information by pilot, aircraft name or comment."
 
 
 @admin.register(Aircrafts)
@@ -92,7 +97,8 @@ class AircraftsAdmin(admin.ModelAdmin):
         "country",
         "destination",
         "get_cargos",
-        "get_pilots"
+        "get_pilots",
+        "comment"
     )
 
     list_filter = (
@@ -108,10 +114,11 @@ class AircraftsAdmin(admin.ModelAdmin):
         "destination__from_airport",
         "destination__to_airport",
         "cargo__name",
-        "cargo__quantity"
+        "cargo__quantity",
+        "comment"
     )
 
-    search_help_text = "Serach for information by country, destination or cargo."
+    search_help_text = "Serach for information by country, destination, cargo or comment."
 
     inlines = (CargosAircraftsInline,)
     exclude = ('cargo',)
@@ -124,6 +131,7 @@ class DestinationsAdmin(admin.ModelAdmin):
         "from_airport",
         "to_airport",
         "get_aircrafts",
+        "comment"
     )
 
     list_filter = (
@@ -133,10 +141,11 @@ class DestinationsAdmin(admin.ModelAdmin):
 
     search_fields = (
         "from_airport",
-        "to_airport"
+        "to_airport",
+        "comment"
     )
 
-    search_help_text = "Serach for information by from airport or to airport."
+    search_help_text = "Serach for information by from airport, to airport or comment."
 
     inlines = (AircraftsInline,)
 
@@ -147,7 +156,8 @@ class CargosAdmin(admin.ModelAdmin):
         "__str__",
         "name",
         "quantity",
-        "get_aircrafts"
+        "get_aircrafts",
+        "comment"
     )
 
     list_filter = (
@@ -156,9 +166,10 @@ class CargosAdmin(admin.ModelAdmin):
 
     search_fields = (
         "name",
-        "quantity"
+        "quantity",
+        "comment"
     )
 
-    search_help_text = "Serach for information by name or quantity."
+    search_help_text = "Serach for information by name, quantity or comment."
 
     inlines = (CargosAircraftsInline,)

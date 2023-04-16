@@ -7,6 +7,7 @@
     <th>Rank</th>
     <th>Age</th>
     <th>Country</th>
+    <th>Comment</th>
     <th>Options</th>
   </tr>
 </thead>
@@ -20,11 +21,12 @@
       <td>{{ pilot.pilotsinformations.rank }}</td>
       <td>{{ pilot.pilotsinformations.age }}</td>
       <td>{{ pilot.pilotsinformations.country }}</td>
+      <td>{{ pilot.pilotsinformations.comment }}</td>
       <td><a href="{{ pilot.get_absolute_url }}"> Details</a></td>
     </tr>
   {% empty %}
     <tr>
-      <td colspan="8">Sorry, there are no pilots!</td>
+      <td colspan="9">Sorry, there are no pilots!</td>
     </tr>
   {% endfor %}
 </tbody>

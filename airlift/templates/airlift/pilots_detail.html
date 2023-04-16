@@ -19,5 +19,6 @@
 		<p>Age: {{ pilot.pilotsinformations.age }}</p>
 		<p>Country: {{ pilot.pilotsinformations.country }}</p>
 		<p>Aircraft name: <a href="{{ pilot.aircraft.get_absolute_url }}">{{ pilot.aircraft }}</a></p>
+		<p>Comment: {{ pilot.pilotsinformations.comment }}</p>
 	</section>
 {% endblock %}

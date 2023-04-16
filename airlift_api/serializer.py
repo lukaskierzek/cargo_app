@@ -9,6 +9,7 @@ class CargosSerializer(serializers.ModelSerializer):
         fields = [
             'name',
             'quantity',
+            'comment'
         ]
 
 
@@ -18,6 +19,7 @@ class DestinationsSerializer(serializers.ModelSerializer):
         fields = [
             'from_airport',
             'to_airport',
+            'comment'
         ]
 
 
@@ -54,7 +56,7 @@ class PilotsSerializerForAircrafts(serializers.ModelSerializer):
         model = Pilots
         fields = [
             'first_name',
-            'last_name',
+            'last_name'
         ]
 
 
@@ -69,5 +71,6 @@ class AircraftsSerializer(serializers.ModelSerializer):
             'name',
             'destination',
             'cargo',
-            'pilots'
+            'pilots',
+            'comment'
         ]

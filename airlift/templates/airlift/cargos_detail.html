@@ -14,5 +14,6 @@
     <p>Cargo name: {{ cargo.name }}</p>
     <p>Quantity: {{ cargo.quantity }}</p>
   	<p>Aircraft with this cargo: {% for aircraft in cargo.get_aircrafts %}{{ aircraft }} | <a href="{{ aircraft.get_absolute_url }}">Details</a>{% endfor %}</p>
+    <p>Comment: {{ cargo.comment }}</p>
 	</section>
 {% endblock %}

@@ -16,8 +16,8 @@ class DestinationUpdateForm(forms.ModelForm):
         widgets = {
             'from_airport': forms.TextInput(attrs={'size': 60}),
             'to_airport': forms.TextInput(attrs={'size': 60}),
-            'scheduled_take_off': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
-            'scheduled_landing': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'scheduled_take_off': forms.DateTimeInput(attrs={'type': 'datetime-local', 'step': '1'}),
+            'scheduled_landing': forms.DateTimeInput(attrs={'type': 'datetime-local', 'step': '1'}),
             'comment': forms.Textarea(attrs={'cols': 60, 'rows': 10})
         }
 

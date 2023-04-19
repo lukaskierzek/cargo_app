@@ -10,6 +10,7 @@
 
 {% block page_content %}
 	<section>
+    <p><a href="{% url 'airlift:pilots_informations_update' pk=pilot.id %}">EDIT ADDITIONAL PILOT INFORMATION FOR: {{ pilot|upper }}</a></p>
     <form method="POST">
       {% csrf_token %}
       <table>

@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView, UpdateView
 
+from .forms import DestinationUpdateForm, AircraftUpdateForm, CargoUpdateForm, PilotsInformationsUpdateForm
 from .models import Destinations, Cargos, Pilots, Aircrafts, PilotsInformations
 
 
@@ -43,15 +44,9 @@ class DestinationsListViews(LoginRequiredMixin, ListView):
 
 class DestinationsUpdate(LoginRequiredMixin, UpdateView):
     model = Destinations
-    fields = [
-        'from_airport',
-        'to_airport',
-        'scheduled_take_off',
-        'scheduled_landing',
-        'comment'
-    ]
     template_name = 'airlift/destinations_form.html'
     context_object_name = 'flight'
+    form_class = DestinationUpdateForm
 
 
 class AircraftsDetailView(LoginRequiredMixin, DetailView):
@@ -68,9 +63,9 @@ class AircraftsListViews(LoginRequiredMixin, ListView):
 
 class AircraftsUpdate(LoginRequiredMixin, UpdateView):
     model = Aircrafts
-    fields = '__all__'
     template_name = 'airlift/aircrafts_form.html'
     context_object_name = 'aircraft'
+    form_class = AircraftUpdateForm
 
 
 class PilotsDetailView(LoginRequiredMixin, DetailView):
@@ -94,9 +89,9 @@ class PilotsUpdate(LoginRequiredMixin, UpdateView):
 
 class PilotsInformationsUpdate(LoginRequiredMixin, UpdateView):
     model = PilotsInformations
-    fields = '__all__'
     template_name = 'airlift/pilots_informations_form.html'
     context_object_name = 'pilots_informations'
+    form_class = PilotsInformationsUpdateForm
 
 
 class CargosDetailViews(LoginRequiredMixin, DetailView):
@@ -113,6 +108,6 @@ class CargosListViews(LoginRequiredMixin, ListView):
 
 class CargosUpdate(LoginRequiredMixin, UpdateView):
     model = Cargos
-    fields = '__all__'
     template_name = 'airlift/cargos_form.html'
     context_object_name = 'cargo'
+    form_class = CargoUpdateForm

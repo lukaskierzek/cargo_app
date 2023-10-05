@@ -13,7 +13,16 @@
 	  <p><a href="{% url 'airlift:cargos_update' pk=cargo.id %}">EDIT CARGO</a></p>
     <p>Cargo name: {{ cargo.name }}</p>
     <p>Quantity: {{ cargo.quantity }}</p>
-  	<p>Aircraft with this cargo: {% for aircraft in cargo.get_aircrafts %}{{ aircraft }} | <a href="{{ aircraft.get_absolute_url }}">Details</a>{% endfor %}</p>
     <p>Comment: {{ cargo.comment }}</p>
 	</section>
+  <section>
+    <p>Aircraft with this cargo: </p>
+    <ul>
+      {% for aircraft in cargo.get_aircrafts %}
+        <li>
+          {{ aircraft }} | <a href="{{ aircraft.get_absolute_url }}">Details</a><br><hr>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
 {% endblock %}

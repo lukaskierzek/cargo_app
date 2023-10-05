@@ -1,18 +1,18 @@
 {% extends 'airlift/base.html' %}
 
 {% block title %}
-  Pilots
+  Aircrafts
 {% endblock %}
 
 {% block header %}
-  PILOTS
+  AIRCRAFTS
 {% endblock %}
 
 {% block page_content %}
 	<section>
 		<table>
-			<caption>All pilots</caption>
-			{% include 'airlift/pilots_list_table_content.html' %}
+			<caption>All aircraft</caption>
+			{% include 'airlift/aircrafts/aircrafts_list_table_content.html' %}
 		</table>
 	</section>
 {% endblock %}

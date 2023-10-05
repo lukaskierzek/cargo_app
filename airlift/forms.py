@@ -35,7 +35,7 @@ class AircraftUpdateForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'size': 60}),
             'country': forms.TextInput(attrs={'size': 60}),
-            'cargo': forms.SelectMultiple(attrs={'size': 10, }),
+            'cargo': forms.SelectMultiple(attrs={'size': 10}),
             'comment': forms.Textarea(attrs={'cols': 60, 'rows': 10}),
         }
 

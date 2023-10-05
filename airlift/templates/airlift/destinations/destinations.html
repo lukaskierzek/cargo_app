@@ -1,18 +1,18 @@
 {% extends 'airlift/base.html' %}
 
 {% block title %}
-  Aircrafts
+  {{ title|capfirst }}
 {% endblock %}
 
 {% block header %}
-  AIRCRAFTS
+  {{ title|upper }}
 {% endblock %}
 
 {% block page_content %}
 	<section>
 		<table>
-			<caption>All aircraft</caption>
-			{% include 'airlift/aircrafts_list_table_content.html' %}
+			<caption>All flights</caption>
+			{% include 'airlift/destinations/destinations_list_table_content.html' %}
 		</table>
 	</section>
 {% endblock %}

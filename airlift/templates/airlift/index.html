@@ -12,7 +12,7 @@
 	<section>
 		<table>
 			<caption>Latest flights</caption>
-			{% include 'airlift/destinations_list_table_content.html' %}
+			{% include 'airlift/destinations/destinations_list_table_content.html' %}
 		</table>
 		<a href="{% url 'airlift:destinations' %}">More flights</a>
 	</section>
@@ -20,7 +20,7 @@
 	<section>
 		<table>
 			<caption>Latest aircraft</caption>
-			{% include 'airlift/aircrafts_list_table_content.html' %}
+			{% include 'airlift/aircrafts/aircrafts_list_table_content.html' %}
 		</table>
 		<a href="{% url 'airlift:aircrafts' %}">More aircrafts</a>
 	</section>
@@ -28,7 +28,7 @@
 	<section>
 		<table>
 			<caption>Latest cargos</caption>
-			{% include 'airlift/cargos_list_table_content.html' %}
+			{% include 'airlift/cargos/cargos_list_table_content.html' %}
 		</table>
 		<a href="{% url 'airlift:cargos' %}">More cargos</a>
 	</section>
@@ -36,7 +36,7 @@
 	<section>
 		<table>
 			<caption>Latest pilots</caption>
-			{% include 'airlift/pilots_list_table_content.html' %}
+			{% include 'airlift/pilots/pilots_list_table_content.html' %}
 		</table>
 		<a href="{% url 'airlift:pilots' %}">More pilots</a>
 	</section>

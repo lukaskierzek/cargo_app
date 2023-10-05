@@ -4,6 +4,9 @@ from airlift.models import PilotsInformations, Pilots, Aircrafts, Destinations, 
 
 
 class AirliftCase(TestCase):
+
+    # region setUpTestData
+
     @classmethod
     def setUpTestData(cls):
         cls.cargo = Cargos.objects.create(
@@ -42,7 +45,9 @@ class AirliftCase(TestCase):
             comment='A very cool pilot'
         )
 
-    # ----------tests for Cargos---------- #
+    # endregion
+
+    # region tests for Cargos
 
     def test_cargo_name(self):
         self.assertEqual(self.cargo._meta.get_field('name').max_length, 255)
@@ -75,7 +80,9 @@ class AirliftCase(TestCase):
         self.assertEqual(self.cargo._meta.verbose_name, "Cargo")
         self.assertEqual(self.cargo._meta.verbose_name_plural, "Cargos")
 
-    # ----------tests for Destinations---------- #
+    # endregion
+
+    # region tests for Destinations
 
     def test_destination_from_airport(self):
         self.assertEqual(self.destination._meta.get_field('from_airport').max_length, 255)
@@ -135,7 +142,9 @@ class AirliftCase(TestCase):
         self.assertEqual(self.destination._meta.verbose_name, "Destination")
         self.assertEqual(self.destination._meta.verbose_name_plural, "Destinations")
 
-    # ----------tests for Aircrafts---------- #
+    # endregion
+
+    # region tests for Aircrafts
 
     def test_aircraft_name(self):
         self.assertEqual(self.aircraft._meta.get_field('name').max_length, 255)
@@ -175,7 +184,9 @@ class AirliftCase(TestCase):
         self.assertEqual(self.aircraft._meta.verbose_name, "Aircraft")
         self.assertEqual(self.aircraft._meta.verbose_name_plural, "Aircrafts")
 
-    # ----------tests for Pilots---------- #
+    # endregion
+
+    # region tests for Pilots
 
     def test_pilot_first_name(self):
         self.assertEqual(self.pilot._meta.get_field('first_name').max_length, 255)
@@ -205,7 +216,9 @@ class AirliftCase(TestCase):
         self.assertEqual(self.pilot._meta.verbose_name, "Pilot information")
         self.assertEqual(self.pilot._meta.verbose_name_plural, "Pilots informations")
 
-    # ----------tests for PilotsInformations---------- #
+    # endregion
+
+    # region tests for PilotsInformations
 
     def test_pilot_info_position(self):
         self.assertEqual(self.pilot_info._meta.get_field('position').max_length, 255)
@@ -249,3 +262,5 @@ class AirliftCase(TestCase):
     def test_pilot_info_meta(self):
         self.assertEqual(self.pilot_info._meta.verbose_name, "Pilot additional information")
         self.assertEqual(self.pilot_info._meta.verbose_name_plural, "Pilot additional informations")
+
+    # endregion
